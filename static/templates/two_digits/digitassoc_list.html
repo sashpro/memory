@@ -1,0 +1,30 @@
+﻿{% extends 'base.html' %}
+{% block two_digits_active %}active{% endblock %}
+{% block title %}Тренировка{% endblock title %}
+{% block content %}
+  <h1>Настройка кодирования цифр</h1>
+  <br>
+  
+<div class="col-xs-12" >
+  {% for digit in digits %}
+    <div class="col-xs-3">
+      <form method="POST">
+        {% csrf_token %}
+
+      <div class="col-xs-1"><strong>{{ digit.digit }}</strong></div>
+      <div class="col-xs-2">
+        <strong><input type="text" name="{{digit.digit}}" value="{{ digit.word }}"></input></strong>
+      </div>
+    </div>
+  {% endfor %}
+ 
+    <div align="center" class="col-xs-12">
+     <br>
+        <button type='submit' >Сохранить</button>
+    </div>
+      </form>
+
+  </div>
+
+  <br>
+{% endblock content %}

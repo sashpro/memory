@@ -1,0 +1,1 @@
+﻿INSERT INTO two_digits_digitview (digit, word) VALUES ('0', 'аНаНас');

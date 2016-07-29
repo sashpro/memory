@@ -1,0 +1,37 @@
+﻿{% extends 'base.html' %}
+{% block two_digits_active %}active{% endblock %}
+{% block title %}Тренеровка{% endblock title %}
+{% block content %}
+  <h1>Тренеруем пары цифр</h1>
+  <br>
+  <div class="col-xs-3">
+     {% if succ %}
+      <div class='btn btn-success' id="result_s"> <h1>ОТЛИЧНО!</h1></div>
+     {% else %}
+     <div class='btn btn-danger' id="result"> <h1>СОБЕРИСЬ!</h1></div>
+
+     {% endif %}
+  </div>
+<div class="col-xs-6">
+
+  <h1 style="font-size: 1150%;color:blue"> <strong>{{ digit }}</strong></h1>
+  <p>
+  <form method="POST">
+    {% csrf_token %}
+    <input type='hidden' name='digit' value={{digit}}></input>
+     <strong><input type="text" name='word' autofocus autocomplete="off" style="color:blue;"></input> </strong>
+    <button type='submit'>ответить</button>
+  </form>
+  <p>
+  <a class="btn btn-primary" href="{% url 'mem_digit:edit' %}">Настроить</a>
+  </div>
+<div class="col-xs-3">
+
+  </div>
+  <br>
+{% endblock content %}
+     {% block script %}
+      <script>
+        $("#result_s").hide(3000);
+      </script>
+     {% endblock script %}

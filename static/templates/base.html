@@ -1,0 +1,47 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="python framework jango обучение">
+    <meta name="author" content="">
+    <title>{% block title %}Главная. Описание курса PyBursa{% endblock title %}</title>
+    <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet">
+    <link href="{%static 'css/style.css'%}" rel="stylesheet">
+  </head>
+
+  <body class="header">
+    <div class="container">
+      <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+		    <li role="presentation" class={% block index_active %}{% endblock %}><a href="">Главная</a></li>
+		    <li role="presentation" class={% block two_digits_active %}{% endblock %}><a href="">2 цифры</a></li>
+		    <li role="presentation" class={% block student_active %}{% endblock %}><a href="">Студенты</a></li> 
+		    <li role="presentation" class={% block quadratic_active %}{% endblock %}><a href="">Уравнение</a></li>
+            <li role="presentation" class={% block feedback_active %}{% endblock %}><a href="">Обратная связь</a></li>
+            {# include "include/i18n_include.html" #}
+        </ul>
+        
+      </nav>
+    </div>
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="container">
+	  {% block content %}
+      {% endblock content %}
+	</div>
+
+  <script src="{%static 'js/jquery-2.2.2.js'%}"></script>
+  <script src="{%static 'js/bootstrap.js'%}"></script>
+  	  {% block script %}
+      {% endblock script %}
+  </body>
+
+</html>
